@@ -1,5 +1,5 @@
 <?php
-function create_category(){
+function create_category($categoryName){
     global $db;
     $query = 'INSERT INTO categories
                 (categoryName)

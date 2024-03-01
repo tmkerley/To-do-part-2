@@ -1,6 +1,7 @@
 <?php 
     require('model\database.php');
     require('model\task_db.php');
+    require('model\category_db.php');
     
     // move to view
     include('views\header.php'); 
@@ -40,6 +41,8 @@
             // add a sorted by categories
             $updateID = NULL;
             $taskList = get_all_active_tasks();
+            $categories = get_all_categories();
+            include('views\categoryDropdown.php');
             include('views\taskListDisplay.php');
             break;
 
@@ -57,7 +60,7 @@
             }
             else if($updateID != FALSE) {
                 // perform update
-                //future add for checking date input validations
+                // future add for checking date input validations
                 $taskName = filter_input(INPUT_POST, 'taskName');
                 $dueDate = filter_input(INPUT_POST, 'dueDate');
                 $taskDesc = filter_input(INPUT_POST, 'taskDesc');
@@ -90,6 +93,12 @@
                 delete_task($taskID);
                 header("Location: .");
             }
+            break;
+        case 'addCategory':
+            // load new category form page
+            $categoryName = filter_input(INPUT_POST, 'categoryName');
+            create_category($categoryName);
+            header("Location: .");
             break;
         case 'UpdateCategory':
             // pull catergory id
