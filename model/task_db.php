@@ -32,6 +32,17 @@ function get_all_active_tasks() {
     return $taskList;
 }
 
+function get_tasks_by_category($id) {
+    global $db;
+    $query = 'SELECT * FROM todoitems
+                WHERE categoryID = :id && (completed = 0 || completed = NULL)';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $taskList = $statement->fetchAll();
+    $statement->closeCursor();
+    return $taskList;
+}
+
 function update_task($taskID, $taskName, $dueDate, $taskDesc, $category) {
     global $db;
     $query = 'UPDATE todoitems

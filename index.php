@@ -2,8 +2,6 @@
     require('model\database.php');
     require('model\task_db.php');
     require('model\category_db.php');
-    
-    // move to view
     include('views\header.php'); 
 
     //checks if no action was taken to get to the page, eg first load.
@@ -40,8 +38,18 @@
             // get active task list and display
             // add a sorted by categories
             $updateID = NULL;
-            $taskList = get_all_active_tasks();
             $categories = get_all_categories();
+            if(empty($categories)) {
+                $categories = NULL;
+            }
+
+            $activeCategoryID = filter_input(INPUT_POST, 'activeCategoryID');
+            if(isset($activeCategoryID)) {
+                $categories = get_tasks_by_category($activeCategoryID);
+            }
+            else{
+                $taskList = get_all_active_tasks();
+            }
             include('views\categoryDropdown.php');
             include('views\taskListDisplay.php');
             break;
@@ -94,7 +102,7 @@
                 header("Location: .");
             }
             break;
-        case 'addCategory':
+        case 'Add Category':
             // load new category form page
             $categoryName = filter_input(INPUT_POST, 'categoryName');
             create_category($categoryName);
@@ -114,6 +122,5 @@
             break;
     }
 
-    // move to view
     include('views\footer.php');
 ?>

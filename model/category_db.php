@@ -15,9 +15,9 @@ function get_all_categories() {
     $query = 'SELECT * FROM categories';
     $statement = $db->prepare($query);
     $statement->execute();
-    $categoryList = $statement->fetchAll();
+    $categories = $statement->fetchAll();
     $statement->closeCursor();
-    return $categoryList;
+    return $categories;
 }
 function update_category($categoryName) {
     global $db;

@@ -1,4 +1,4 @@
-<section id="taskList" class="container-lg justify-content-center bg-secondary-subtle">
+<section id="taskList" class="container-lg justify-content-center bg-secondary-subtle x-0">
     <ul>
         <?php if($taskList) { 
             foreach($taskList as $task) : 

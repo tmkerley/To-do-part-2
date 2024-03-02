@@ -1,5 +1,5 @@
 <div class="card border-info w-auto">
-    <div class="card-header bg-info p-2" id="$task['title']">
+    <div class="card-header bg-info " id="$task['title']">
         <?php echo $task['title']; ?>
     </div>
     <ul class="list-group list-group-flush">

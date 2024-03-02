@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To-do List App</title>
     <link rel="stylesheet" href="views\css\bootstrap.min.css">
+    <script src="js\bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <main class="bg-secondary-subtle">
