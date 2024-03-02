@@ -10,6 +10,16 @@ function create_category($categoryName){
     $statement->execute();
     $statement->closeCursor();
 }
+function get_category_name($categoryID) {
+    global $db;
+    $query = 'SELECT * FROM categories
+                WHERE categoryID = :categoryID';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $name = $statement->fetch();
+    $statement->closeCursor();
+    return $name;
+}
 function get_all_categories() {
     global $db;
     $query = 'SELECT * FROM categories';
@@ -19,11 +29,11 @@ function get_all_categories() {
     $statement->closeCursor();
     return $categories;
 }
-function update_category($categoryName) {
+function update_category($categoryID) {
     global $db;
     $query = 'UPDATE categories
         SET categoryName = :categoryName, 
-    WHERE category = :categoryID';
+    WHERE categoryID = :categoryID';
     $statement = $db->prepare($query);
     $statement->execute();
     $statement->closeCursor();

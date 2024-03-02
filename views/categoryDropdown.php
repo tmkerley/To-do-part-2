@@ -3,14 +3,19 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" 
                 data-bs-toggle="dropdown" aria-expanded="true" role="button">
-                Categories
+                <?php if($activeCategoryID){ 
+                    echo $activeCategoryName; 
+                }
+                else { ?>
+                    Categories
+                <?php } ?>
             </button>
             <ul class="dropdown-menu">
                 <?php foreach($categories as $category) : ?>
                     <li>
                         <a class="dropdown-item" 
-                            href="?category_id=<?php echo $categories[0]; ?>">
-                            <?php echo $categories[1]; ?>
+                            href="?activeCategoryID=<?php echo $category['categoryID']; ?>">
+                            <?php echo $category['categoryName']; ?>
                         </a>
                     </li>
                 <?php endforeach; ?> 

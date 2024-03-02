@@ -32,10 +32,10 @@ function get_all_active_tasks() {
     return $taskList;
 }
 
-function get_tasks_by_category($id) {
+function get_tasks_by_category($categoryID) {
     global $db;
     $query = 'SELECT * FROM todoitems
-                WHERE categoryID = :id && (completed = 0 || completed = NULL)';
+                WHERE categoryID = :categoryID && (completed = 0 || completed = NULL)';
     $statement = $db->prepare($query);
     $statement->execute();
     $taskList = $statement->fetchAll();

@@ -45,9 +45,11 @@
 
             $activeCategoryID = filter_input(INPUT_POST, 'activeCategoryID');
             if(isset($activeCategoryID)) {
-                $categories = get_tasks_by_category($activeCategoryID);
+                $activeCategoryName = get_category_name($activeCategoryID);
+                $taskList = get_tasks_by_category($activeCategoryID);
             }
             else{
+                $activeCategoryID = NULL;
                 $taskList = get_all_active_tasks();
             }
             include('views\categoryDropdown.php');
