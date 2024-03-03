@@ -1,7 +1,9 @@
 <div class="card border-info w-auto">
     <div class="card-header bg-info " id="$task['title']">
         <?php echo $task['title']; ?>
+        <span>
         <?php echo $task['categoryName']; ?>
+</span>
     </div>
     <ul class="list-group list-group-flush">
         <?php if($task['dueDate'] && $task['dueDate'] != '0000-00-00') { ?>

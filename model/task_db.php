@@ -23,8 +23,9 @@ function create_task($taskName, $dueDate, $taskDesc) {
 
 function get_all_active_tasks() {
     global $db;
-    $query = 'SELECT * FROM todoitems
-                WHERE completed = 0 || completed = NULL';
+    $query = 'SELECT * FROM todoitems 
+                JOIN categories ON categories.categoryID = todoitems.categoryID 
+                WHERE completed = 0';
     $statement = $db->prepare($query);
     $statement->execute();
     $taskList = $statement->fetchAll();
@@ -34,8 +35,9 @@ function get_all_active_tasks() {
 
 function get_tasks_by_category($categoryID) {
     global $db;
-    $query = 'SELECT * FROM todoitems
-                WHERE categoryID = :categoryID && (completed = 0 || completed = NULL)';
+    $query = 'SELECT * FROM todoitems 
+                JOIN categories ON categories.:categoryID = todoitems.:categoryID 
+                WHERE completed = 0 && categoryID = :categoryID';
     $statement = $db->prepare($query);
     $statement->execute();
     $taskList = $statement->fetchAll();
