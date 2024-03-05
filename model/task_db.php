@@ -52,14 +52,14 @@ function update_task($taskID, $taskName, $dueDate, $taskDesc, $category) {
             SET title = :taskName, 
                 dueDate = :dueDate,
                 description = :taskDesc,
-                category = :category    
+                categoryID = :categoryID    
             WHERE itemNum = :taskID';
     $statement = $db->prepare($query);
     $statement->bindValue(':taskID', $taskID);
     $statement->bindValue(':taskName', $taskName);
     $statement->bindValue(':dueDate', $dueDate);
     $statement->bindValue(':taskDesc', $taskDesc);
-    $statement->bindValue(':category', $category);
+    $statement->bindValue(':categoryID', $category);
     $statement->execute();
     $statement->closeCursor();
 }

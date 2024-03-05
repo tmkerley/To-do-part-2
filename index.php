@@ -66,6 +66,7 @@
                 // if updateID isn't set, assign to the task
                 $updateID = filter_input(INPUT_POST, 'taskID', FILTER_VALIDATE_INT);
                 $taskList = get_all_active_tasks();
+                $categories = get_all_categories();
                 include('views\taskListDisplay.php');
             }
             else if($updateID != FALSE) {
@@ -74,8 +75,8 @@
                 $taskName = filter_input(INPUT_POST, 'taskName');
                 $dueDate = filter_input(INPUT_POST, 'dueDate');
                 $taskDesc = filter_input(INPUT_POST, 'taskDesc');
-                $category = filter_input(INPUT_POST, 'category');
-                update_task($updateID, $taskName, $dueDate, $taskDesc, $category);
+                $categoryID = filter_input(INPUT_POST, 'categoryID');
+                update_task($updateID, $taskName, $dueDate, $taskDesc, $categoryID);
                 // clear update
                 $updateID = NULL;
                 // redirect

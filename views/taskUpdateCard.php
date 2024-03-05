@@ -7,7 +7,7 @@
             <input type="text" name="taskName" value="<?php echo $task['title']; ?>" required>
         </div>
         <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+            <li class="list-group-item">
                 <label for="dueDate">Due Date:</label>
                 <?php if ($task['dueDate'] != NULL) { ?>
                     <input type="date" name="dueDate" value="<?php echo $task['dueDate']; ?>">
@@ -16,6 +16,16 @@
                     <input type="date" name="dueDate">
                 <?php } ?>
             </li> 
+            <li class="list-group-item">
+                <label for="category">Category:</label>
+                <select class="form-select" name="categoryID" aria-label="Default select example">
+                    <option selected value="<?php echo $task['categoryID']; ?>"><?php echo $task['categoryName']; ?></option>
+                    <?php foreach($categories as $category) : 
+                        if($category['categoryName'] != $task['categoryName']) { ?>
+                        <option value="<?php echo $category['categoryID']; ?>"><?php echo $category['categoryName']; ?></option>
+                    <?php } endforeach ?>
+                </select>
+            </li>
             <li class="list-group-item">
                 <?php if($task['description']) { ?>
                     <label for="Task Description"></label>
