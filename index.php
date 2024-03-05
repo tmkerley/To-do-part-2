@@ -120,6 +120,14 @@
                 update_category($categoryID);
                 header("Location: .");
             }
+            break;
+        case 'delete category':
+            $categoryID = filter_input(INPUT_POST, 'catergoryID', FILTER_VALIDATE_INT);
+            if($categoryID != NULL && $categoryID != FALSE) {
+                delete_category($categoryID);
+                header("Location: .");
+            }
+            break;
         default:
             echo "Default action taken. There's something wrong.";
             break;
