@@ -36,9 +36,10 @@ function get_all_active_tasks() {
 function get_tasks_by_category($categoryID) {
     global $db;
     $query = 'SELECT * FROM todoitems 
-                JOIN categories ON categories.:categoryID = todoitems.:categoryID 
-                WHERE completed = 0 && categoryID = :categoryID';
+                JOIN categories ON categories.categoryID = todoitems.categoryID 
+                WHERE todoitems.completed = 0 && todoitems.categoryID = :categoryID';
     $statement = $db->prepare($query);
+    $statement->bindValue(':categoryID', $categoryID);
     $statement->execute();
     $taskList = $statement->fetchAll();
     $statement->closeCursor();

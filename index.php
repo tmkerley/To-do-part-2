@@ -43,9 +43,9 @@
                 $categories = NULL;
             }
 
-            $activeCategoryID = filter_input(INPUT_POST, 'activeCategoryID');
+            $activeCategoryID = filter_input(INPUT_GET, 'activeCategoryID');
             if(isset($activeCategoryID)) {
-                $activeCategoryName = get_category_name($activeCategoryID);
+                $activeCategory = get_category_name($activeCategoryID);
                 $taskList = get_tasks_by_category($activeCategoryID);
             }
             else{

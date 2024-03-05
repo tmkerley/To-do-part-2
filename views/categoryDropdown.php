@@ -4,7 +4,7 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" 
                 data-bs-toggle="dropdown" aria-expanded="true" role="button">
                 <?php if($activeCategoryID){ 
-                    echo $activeCategoryName; 
+                    echo $activeCategory['categoryName']; 
                 }
                 else { ?>
                     Categories

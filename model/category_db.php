@@ -15,6 +15,7 @@ function get_category_name($categoryID) {
     $query = 'SELECT * FROM categories
                 WHERE categoryID = :categoryID';
     $statement = $db->prepare($query);
+    $statement->bindValue(':categoryID', $categoryID);
     $statement->execute();
     $name = $statement->fetch();
     $statement->closeCursor();
